@@ -1,0 +1,138 @@
+{
+  "schema": 1,
+  "version": "2026.11.07",
+  "presets": [
+    {
+      "id": "general",
+      "name": "Flowseal General",
+      "description": "Базовая: multisplit pos=1 (seqovl 681 эмулирован), fake QUIC.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s1 -A n -Kt -V8443 -H:discord.media -s1 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s1 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1"
+    },
+    {
+      "id": "alt",
+      "name": "Flowseal ALT",
+      "description": "fake + fakedsplit (эмуляция: disorder + fake), fooling ts.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -d1 -f-1 -t8 -A n -Kt -V8443 -H:discord.media -d1 -f-1 -t8 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -d1 -f-1 -t8 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -d1 -f-1 -t8 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -d1 -f-1 -t8 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -d1 -f-1 -t8"
+    },
+    {
+      "id": "alt2",
+      "name": "Flowseal ALT 2",
+      "description": "Multisplit pos=2 (seqovl 652 эмулирован).",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s2 -A n -Kt -V8443 -H:discord.media -s2 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s2 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s2 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s2 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s2"
+    },
+    {
+      "id": "alt3",
+      "name": "Flowseal ALT 3",
+      "description": "fake + hostfakesplit, случайный TLS и SNI www.google.com.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -d1 -f-1 -Qr -n www.google.com -A n -Kt -V8443 -H:discord.media -d1 -f-1 -Qr -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -d1 -f-1 -Qr -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal General}\" -d1 -f-1 -Qr -n www.google.com -A n -Kh -V80 -H:\"{list:Flowseal General}\" -d1 -f-1 -Qr -n www.google.com -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -d1 -f-1 -Qr -n www.google.com"
+    },
+    {
+      "id": "alt4",
+      "name": "Flowseal ALT 4",
+      "description": "fake + multisplit, badseq заменён на увеличенный TTL фейка.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s1 -f-1 -t9 -A n -Kt -V8443 -H:discord.media -s1 -f-1 -t9 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s1 -f-1 -t9 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1 -f-1 -t9 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1 -f-1 -t9 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1 -f-1 -t9"
+    },
+    {
+      "id": "alt5",
+      "name": "Flowseal ALT 5",
+      "description": "Multidisorder; syndata в userspace недоступен и опущен.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -d1 -d3 -d5 -A n -Kt -V8443 -H:discord.media -d1 -d3 -d5 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -d1 -d3 -d5 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -d1 -d3 -d5 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -d1 -d3 -d5 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -d1 -d3 -d5"
+    },
+    {
+      "id": "alt6",
+      "name": "Flowseal ALT 6",
+      "description": "Multisplit pos=1 + дополнительная позиция (seqovl 681).",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s1:2:1 -A n -Kt -V8443 -H:discord.media -s1:2:1 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s1:2:1 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1:2:1 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1:2:1 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1:2:1"
+    },
+    {
+      "id": "alt7",
+      "name": "Flowseal ALT 7",
+      "description": "Multisplit pos=2 и sniext+1 (seqovl 679).",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s2 -s1+s -A n -Kt -V8443 -H:discord.media -s2 -s1+s -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s2 -s1+s -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s2 -s1+s -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s2 -s1+s -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s2 -s1+s"
+    },
+    {
+      "id": "alt8",
+      "name": "Flowseal ALT 8",
+      "description": "Fake без модификации TLS; badseq заменён на TTL 10.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -f-1 -t10 -A n -Kt -V8443 -H:discord.media -f-1 -t10 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -f-1 -t10 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -f-1 -t10 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -f-1 -t10 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -f-1 -t10"
+    },
+    {
+      "id": "alt9",
+      "name": "Flowseal ALT 9",
+      "description": "hostfakesplit (эмуляция fake+disorder) с подменой SNI; md5sig опущен.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -d1 -f-1 -n www.google.com -t8 -A n -Kt -V8443 -H:discord.media -d1 -f-1 -n www.google.com -t8 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -d1 -f-1 -n www.google.com -t8 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -d1 -f-1 -n www.google.com -t8 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -d1 -f-1 -n www.google.com -t8 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -d1 -f-1 -n www.google.com -t8"
+    },
+    {
+      "id": "alt10",
+      "name": "Flowseal ALT 10",
+      "description": "Простой fake с fooling ts и случайным TLS, TTL 7.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -f-1 -Qr -t7 -A n -Kt -V8443 -H:discord.media -f-1 -Qr -t7 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -f-1 -Qr -t7 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -f-1 -Qr -t7 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -f-1 -Qr -t7 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -f-1 -Qr -t7"
+    },
+    {
+      "id": "alt11",
+      "name": "Flowseal ALT 11",
+      "description": "fake + multisplit, seqovl 681/664 эмулирован позициями, QUIC ×11.",
+      "args": "-Ku -V443 -a11 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s1:2:1 -f-1 -Qr -A n -Kt -V8443 -H:discord.media -s1:2:1 -f-1 -Qr -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s1:2:1 -f-1 -Qr -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr"
+    },
+    {
+      "id": "alt12",
+      "name": "Flowseal ALT 12",
+      "description": "fake + multisplit для general, hostfakesplit для Google.",
+      "args": "-Ku -V443 -a11 -A n -Ku -V19294-19344 -a3 -A n -Ku -V50000-50100 -a3 -A n -Kt -V2053-2096 -H:discord.media -s1:2:1 -f-1 -Qr -t7 -A n -Kt -V8443 -H:discord.media -s1:2:1 -f-1 -Qr -t7 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -d1 -f-1 -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -t7 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -t7 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -t7"
+    },
+    {
+      "id": "alt13",
+      "name": "Flowseal ALT 13",
+      "description": "fake + hostfakesplit с SNI mail.ru, QUIC ×11.",
+      "args": "-Ku -V443 -a11 -A n -Ku -V19294-19344 -a5 -A n -Ku -V50000-50100 -a5 -A n -Kt -V2053-2096 -H:discord.media -s1:2:1 -f-1 -Qr -t7 -A n -Kt -V8443 -H:discord.media -s1:2:1 -f-1 -Qr -t7 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -d1 -f-1 -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal General}\" -d1 -f-1 -Qr -n mail.ru -A n -Kh -V80 -H:\"{list:Flowseal General}\" -d1 -f-1 -Qr -n mail.ru -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -d1 -f-1 -Qr -n mail.ru"
+    },
+    {
+      "id": "exp",
+      "name": "Flowseal EXP",
+      "description": "Экспериментальная: fake + split с уменьшенным TTL.",
+      "args": "-Ku -V443 -a11 -A n -Ku -V19294-19344 -a4 -A n -Ku -V50000-50100 -a4 -A n -Kt -V2053-2096 -H:discord.media -s1:2:1 -f-1 -Qr -t6 -A n -Kt -V8443 -H:discord.media -s1:2:1 -f-1 -Qr -t6 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -d1 -f-1 -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1 -f-1 -Qr -t6 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1 -f-1 -Qr -t6 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1 -f-1 -Qr -t6"
+    },
+    {
+      "id": "fake_tls_auto",
+      "name": "Flowseal Fake TLS AUTO",
+      "description": "fake + multidisorder pos=1,midsld, случайный TLS (rnd/dupsid).",
+      "args": "-Ku -V443 -a11 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -d0+sm -f-1 -Qr -n www.google.com -A n -Kt -V8443 -H:discord.media -d0+sm -f-1 -Qr -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -d0+sm -f-1 -Qr -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal General}\" -d0+sm -f-1 -Qr -n www.google.com -A n -Kh -V80 -H:\"{list:Flowseal General}\" -d0+sm -f-1 -Qr -n www.google.com -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -d0+sm -f-1 -Qr -n www.google.com"
+    },
+    {
+      "id": "fake_tls_auto_alt",
+      "name": "Flowseal Fake TLS AUTO ALT",
+      "description": "fake + fakedsplit pos=1 с badseq-эмуляцией и случайным TLS.",
+      "args": "-Ku -V443 -a11 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s1 -f-1 -Qr -n www.google.com -A n -Kt -V8443 -H:discord.media -s1 -f-1 -Qr -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s1 -f-1 -Qr -n www.google.com -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1 -f-1 -Qr -n www.google.com -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1 -f-1 -Qr -n www.google.com -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1 -f-1 -Qr -n www.google.com"
+    },
+    {
+      "id": "fake_tls_auto_alt2",
+      "name": "Flowseal Fake TLS AUTO ALT 2",
+      "description": "fake + multisplit, badseq 10000000 заменён на TTL 9.",
+      "args": "-Ku -V443 -a11 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s1:2:1 -f-1 -Qr -n www.google.com -t9 -A n -Kt -V8443 -H:discord.media -s1:2:1 -f-1 -Qr -n www.google.com -t9 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s1:2:1 -f-1 -Qr -n www.google.com -t9 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -n www.google.com -t9 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -n www.google.com -t9 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -n www.google.com -t9"
+    },
+    {
+      "id": "fake_tls_auto_alt3",
+      "name": "Flowseal Fake TLS AUTO ALT 3",
+      "description": "fake + multisplit с fooling ts и случайным TLS.",
+      "args": "-Ku -V443 -a11 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -s1:2:1 -f-1 -Qr -t9 -A n -Kt -V8443 -H:discord.media -s1:2:1 -f-1 -Qr -t9 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -s1:2:1 -f-1 -Qr -t9 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -t9 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -t9 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -s1:2:1 -f-1 -Qr -t9"
+    },
+    {
+      "id": "simple_fake",
+      "name": "Flowseal Simple Fake",
+      "description": "Минимальный fake с TTL 8 и fooling ts.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -f-1 -Qr -t8 -A n -Kt -V8443 -H:discord.media -f-1 -Qr -t8 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -f-1 -Qr -t8 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -f-1 -Qr -t8 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -f-1 -Qr -t8 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -f-1 -Qr -t8"
+    },
+    {
+      "id": "simple_fake_alt",
+      "name": "Flowseal Simple Fake ALT",
+      "description": "Simple Fake; badseq заменён на увеличенный TTL 9.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -f-1 -t9 -A n -Kt -V8443 -H:discord.media -f-1 -t9 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -f-1 -t9 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -f-1 -t9 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -f-1 -t9 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -f-1 -t9"
+    },
+    {
+      "id": "simple_fake_alt2",
+      "name": "Flowseal Simple Fake ALT 2",
+      "description": "Simple Fake с fooling ts и TTL 10.",
+      "args": "-Ku -V443 -a6 -A n -Ku -V19294-19344 -a6 -A n -Ku -V50000-50100 -a6 -A n -Kt -V2053-2096 -H:discord.media -f-1 -Qr -t10 -A n -Kt -V8443 -H:discord.media -f-1 -Qr -t10 -A n -Kt -V443 -H:\"{list:Flowseal Google}\" -f-1 -Qr -t10 -A n -Kt -V443 -H:\"{list:Flowseal General}\" -f-1 -Qr -t10 -A n -Kh -V80 -H:\"{list:Flowseal General}\" -f-1 -Qr -t10 -A n -Kt -V8443 -H:\"{list:Flowseal General}\" -f-1 -Qr -t10"
+    }
+  ]
+}

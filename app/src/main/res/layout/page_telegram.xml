@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".activities.TelegramFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ==================== Подключение ==================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/tg_proxy_connection"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/tg_toggle_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="6dp"
+            app:checkedButton="@id/tg_btn_off"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tg_btn_on"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tg_connect"
+                android:textColor="@color/tg_toggle_text"
+                app:backgroundTint="@color/tg_toggle_bg" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/tg_btn_off"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tg_disconnect"
+                android:textColor="@color/tg_toggle_text"
+                app:backgroundTint="@color/tg_toggle_bg" />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <TextView
+            android:id="@+id/tg_status_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/tg_state_off"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tg_stats_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/tg_traffic_0"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tg_abi_warning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/tg_abi_warning"
+            android:textColor="?android:textColorSecondary"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tg_apply_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tg_apply" />
+
+            <Button
+                android:id="@+id/tg_copy_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/tg_copy" />
+        </LinearLayout>
+
+        <!-- ==================== Секрет ==================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:text="@string/tg_secret"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/tg_secret_et"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="false"
+                android:inputType="text"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tg_secret_regen_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/tg_regenerate" />
+
+            <Button
+                android:id="@+id/tg_secret_copy_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="@string/tg_copy_secret" />
+        </LinearLayout>
+
+        <!-- ==================== Настройки ==================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/tg_settings"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_bind_ip" />
+
+        <EditText
+            android:id="@+id/tg_bind_ip_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="127.0.0.1"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_port" />
+
+        <EditText
+            android:id="@+id/tg_port_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="1443"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_pool_size" />
+
+        <EditText
+            android:id="@+id/tg_pool_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="4"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_buffer_size" />
+
+        <EditText
+            android:id="@+id/tg_buffer_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:hint="64"
+            android:inputType="number" />
+
+        <CheckBox
+            android:id="@+id/tg_cf_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_cf_proxy" />
+
+        <CheckBox
+            android:id="@+id/tg_custom_cf_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_custom_cf_domain" />
+
+        <EditText
+            android:id="@+id/tg_custom_cf_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:enabled="false"
+            android:hint="example.com"
+            android:inputType="textUri" />
+
+        <CheckBox
+            android:id="@+id/tg_fake_tls_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_fake_tls" />
+
+        <EditText
+            android:id="@+id/tg_fake_tls_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:enabled="false"
+            android:hint="t.me"
+            android:inputType="textUri" />
+
+        <CheckBox
+            android:id="@+id/tg_disable_secure_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_disable_secure" />
+
+        <CheckBox
+            android:id="@+id/tg_protocol_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_proxy_protocol" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/tg_protocol_hint"
+            android:textColor="?android:textColorSecondary"
+            android:textSize="12sp" />
+
+        <CheckBox
+            android:id="@+id/tg_force_test_dc_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_force_test_dc" />
+
+        <CheckBox
+            android:id="@+id/tg_autostart_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_autostart" />
+
+        <!-- ==================== DC ==================== -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="@string/tg_dc_settings"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/tg_dc_auto_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_dc_auto" />
+
+        <CheckBox
+            android:id="@+id/tg_experimental_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tg_experimental" />
+
+        <LinearLayout
+            android:id="@+id/tg_dc_manual_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/tg_main_dcs"
+                android:textStyle="italic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="DC1" />
+
+                <EditText
+                    android:id="@+id/tg_dc1_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="DC2" />
+
+                <EditText
+                    android:id="@+id/tg_dc2_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="DC3" />
+
+                <EditText
+                    android:id="@+id/tg_dc3_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="DC4" />
+
+                <EditText
+                    android:id="@+id/tg_dc4_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="DC5" />
+
+                <EditText
+                    android:id="@+id/tg_dc5_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="DC203" />
+
+                <EditText
+                    android:id="@+id/tg_dc203_et"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tg_media_dc_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/tg_media_dcs"
+                android:textStyle="italic"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/tg_media_dc_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="-DC1" />
+
+                    <EditText
+                        android:id="@+id/tg_dc1m_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="-DC2" />
+
+                    <EditText
+                        android:id="@+id/tg_dc2m_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="-DC3" />
+
+                    <EditText
+                        android:id="@+id/tg_dc3m_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="-DC4" />
+
+                    <EditText
+                        android:id="@+id/tg_dc4m_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="-DC5" />
+
+                    <EditText
+                        android:id="@+id/tg_dc5m_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="text" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="56dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:text="-DC203" />
+
+                    <EditText
+                        android:id="@+id/tg_dc203m_et"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="text" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ==================== Действия ==================== -->
+        <Button
+            android:id="@+id/tg_save_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/tg_save_settings" />
+
+        <Button
+            android:id="@+id/tg_open_logs_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/tg_open_logs" />
+    </LinearLayout>
+</ScrollView>

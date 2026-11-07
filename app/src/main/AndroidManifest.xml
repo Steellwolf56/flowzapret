@@ -16,10 +16,28 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="AllFilesAccessPolicy,ScopedStorage" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" tools:ignore="PackageVisibilityPolicy,QueryAllPackagesPermission" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-feature android:name="android.software.leanback" android:required="false" />
     <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
 
+    <queries>
+        <package android:name="org.telegram.messenger" />
+        <package android:name="org.telegram.messenger.web" />
+        <package android:name="com.radolyn.ayugram" />
+        <package android:name="com.exteragram.messenger" />
+        <package android:name="org.telegram.plus" />
+        <package android:name="ir.ilmili.telegraph" />
+        <package android:name="org.telegram.BifToGram" />
+        <package android:name="tw.nekomimi.nekogram" />
+        <package android:name="xyz.nextalone.nagram" />
+        <package android:name="uz.unnarsx.cherrygram" />
+        <package android:name="org.telegram.mdgram" />
+        <package android:name="org.telegram.telegraph" />
+        <package android:name="com.zherebtsov.tg" />
+    </queries>
+
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -117,6 +135,25 @@
                     android:name="android.service.quicksettings.action.QS_TILE"/>
             </intent-filter>
         </service>
+
+        <service
+            android:name=".tgproxy.TgProxyService"
+            android:foregroundServiceType="specialUse"
+            android:exported="false">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="network" />
+        </service>
+
+        <activity
+            android:name=".activities.TgProxyLogActivity"
+            android:label="@string/tg_proxy_logs"
+            android:exported="false"/>
+
+        <activity
+            android:name=".activities.ComponentsActivity"
+            android:label="@string/components_title"
+            android:exported="false" />
 
         <receiver
             android:name=".receiver.ServiceActionReceiver"

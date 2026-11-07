@@ -70,7 +70,7 @@
             android:key="selected_apps"
             android:icon="@drawable/ic_apps"
             android:title="@string/apps_select"
-            app:fragment="io.github.romanvht.byedpi.fragments.AppSelectionFragment" />
+            app:fragment="com.flowzapret.fragments.AppSelectionFragment" />
 
     </androidx.preference.PreferenceCategory>
 
@@ -105,14 +105,14 @@
             android:icon="@drawable/ic_tune"
             android:title="@string/ui_editor"
             app:useSimpleSummaryProvider="true"
-            app:fragment="io.github.romanvht.byedpi.fragments.ByeDpiUISettingsFragment" />
+            app:fragment="com.flowzapret.fragments.ByeDpiUISettingsFragment" />
 
         <Preference
             android:key="byedpi_cmd_settings"
             android:icon="@drawable/ic_code"
             android:title="@string/command_line_editor"
             app:useSimpleSummaryProvider="true"
-            app:fragment="io.github.romanvht.byedpi.fragments.ByeDpiCMDSettingsFragment" />
+            app:fragment="com.flowzapret.fragments.ByeDpiCMDSettingsFragment" />
 
         <Preference
             android:key="proxy_test"
@@ -195,6 +195,43 @@
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="https://byebyedpi.xyz" />
+        </Preference>
+
+        <Preference
+            android:key="flowseal_strategies"
+            android:icon="@drawable/ic_github"
+            android:title="@string/flowseal_strategies_link">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/Flowseal/zapret-discord-youtube" />
+        </Preference>
+
+        <Preference
+            android:key="byedpi_engine"
+            android:icon="@drawable/ic_github"
+            android:title="@string/byedpi_engine_link">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/hufrea/byedpi" />
+        </Preference>
+
+        <Preference
+            android:key="zapret_engine"
+            android:icon="@drawable/ic_github"
+            android:title="@string/zapret_engine_link">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://github.com/bol-van/zapret" />
+        </Preference>
+
+        <Preference
+            android:key="license"
+            android:icon="@drawable/ic_info"
+            android:title="@string/license_link"
+            android:summary="@string/license_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://www.gnu.org/licenses/gpl-3.0.html" />
         </Preference>
 
         <Preference

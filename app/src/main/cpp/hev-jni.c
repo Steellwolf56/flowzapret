@@ -20,7 +20,7 @@ static void load_tunnel(void) {
 }
 
 JNIEXPORT jint JNICALL
-Java_io_github_romanvht_byedpi_core_TProxyService_startTunnel(JNIEnv *env, __attribute__((unused)) jobject thiz, jstring config, jint fd) {
+Java_com_flowzapret_core_TProxyService_startTunnel(JNIEnv *env, __attribute__((unused)) jobject thiz, jstring config, jint fd) {
     pthread_once(&tunnel_once, load_tunnel);
     if (!tunnel_main || !tunnel_quit) {
         LOG(LOG_S, "tunnel entry points unavailable");
@@ -38,7 +38,7 @@ Java_io_github_romanvht_byedpi_core_TProxyService_startTunnel(JNIEnv *env, __att
 }
 
 JNIEXPORT void JNICALL
-Java_io_github_romanvht_byedpi_core_TProxyService_stopTunnel(__attribute__((unused)) JNIEnv *env, __attribute__((unused)) jobject thiz) {
+Java_com_flowzapret_core_TProxyService_stopTunnel(__attribute__((unused)) JNIEnv *env, __attribute__((unused)) jobject thiz) {
     pthread_once(&tunnel_once, load_tunnel);
     if (tunnel_quit) {
         tunnel_quit();

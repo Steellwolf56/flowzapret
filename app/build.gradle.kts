@@ -1,26 +1,44 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
 }
 
-val abis = setOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
+val abis = setOf("armeabi-v7a", "arm64-v8a")
+
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.exists()) {
+        FileInputStream(keystorePropertiesFile).use { load(it) }
+    }
+}
 
 android {
-    namespace = "io.github.romanvht.byedpi"
+    namespace = "com.flowzapret"
     //noinspection GradleDependency
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "io.github.romanvht.byedpi"
-        minSdk = 21
+        applicationId = "com.flowzapret"
+        minSdk = 26
         //noinspection OldTargetApi
         targetSdk = 34
-        versionCode = 1820
-        versionName = "1.8.2"
+        versionCode = 3
+        versionName = "1.2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Версия контракта нативных компонентов. Поднимать при несовместимом
+        // изменении JNI-символов/классов.
+        buildConfigField("int", "COMPONENT_API", "1")
+        buildConfigField(
+            "String",
+            "COMPONENTS_MANIFEST_URL",
+            "\"https://raw.githubusercontent.com/Steellwolf56/flowzapret-components/main/components.json\"",
+        )
 
         ndk {
             abiFilters.addAll(abis)
@@ -32,12 +50,38 @@ android {
         viewBinding = true
     }
 
+    sourceSets {
+        getByName("main") {
+            // libtgwsproxy.so лежит отдельно: ndk-build очищает src/main/jniLibs.
+            jniLibs.srcDir("src/main/tgwsJniLibs")
+        }
+    }
+
+    lint {
+        // Новые строки Telegram пока переведены только на ru/en.
+        disable += "MissingTranslation"
+    }
+
+    signingConfigs {
+        create("release") {
+            if (keystorePropertiesFile.exists()) {
+                storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+                storePassword = keystoreProperties.getProperty("storePassword")
+                keyAlias = keystoreProperties.getProperty("keyAlias")
+                keyPassword = keystoreProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
             buildConfigField("String", "VERSION_NAME",  "\"${defaultConfig.versionName}\"")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             isMinifyEnabled = true
             isShrinkResources = true
+            if (keystorePropertiesFile.exists()) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
         debug {
             buildConfigField("String", "VERSION_NAME",  "\"${defaultConfig.versionName}-debug\"")
@@ -89,6 +133,8 @@ dependencies {
     implementation("androidx.preference:preference-ktx:1.2.1")
     implementation("com.google.android.material:material:1.13.0")
     implementation("com.google.code.gson:gson:2.14.0")
+    implementation("net.java.dev.jna:jna:5.14.0@aar")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")

@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "generatedAt": "2026-11-07T16:53:42Z",
+  "components": {
+    "byedpi": {
+      "version": "0.16.6+flowzapret.4443e400",
+      "nativeApi": 1,
+      "minAppVersionCode": 2,
+      "abis": {
+        "arm64-v8a": {
+          "url": "libbyedpi-arm64-v8a.so",
+          "sha256": "e6517d7cafc753b08c03fc0d4d7e88e9e1b543d2e72efd9ef3c36aae6f5d52a4",
+          "size": 83472
+        },
+        "armeabi-v7a": {
+          "url": "libbyedpi-armeabi-v7a.so",
+          "sha256": "6795fece3438ae18d6e21ab6b9b4d9e4ba7b76d79b06c71edec8fedbb0a9f4d0",
+          "size": 59872
+        }
+      }
+    },
+    "tgwsproxy": {
+      "version": "1.0.0+flowzapret.154f6f8b",
+      "nativeApi": 1,
+      "minAppVersionCode": 2,
+      "abis": {
+        "arm64-v8a": {
+          "url": "libtgwsproxy-arm64-v8a.so",
+          "sha256": "d8addf1c4308d7bd1b3480fdb147cf8491bf7f8bc737c3b4a9e2da80a31d2ad6",
+          "size": 2223848
+        },
+        "armeabi-v7a": {
+          "url": "libtgwsproxy-armeabi-v7a.so",
+          "sha256": "c6462f96ad7494ecea154692bf858e043eca6b8183758c40282d781dda305ccf",
+          "size": 1456328
+        }
+      }
+    },
+    "presets": {
+      "version": "2026.11.07+295b7d6e",
+      "nativeApi": 1,
+      "minAppVersionCode": 2,
+      "artifact": {
+        "url": "flowseal_presets.json",
+        "sha256": "295b7d6e941a955fbee6bf186558abfb92b408afb71ca3b3dd2f84755009684b",
+        "size": 13474
+      }
+    }
+  }
+}

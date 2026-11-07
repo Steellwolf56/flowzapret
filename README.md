@@ -1,65 +1,48 @@
-<div align="center">
-  <p>
-    <img src="https://github.com/romanvht/ByeDPIAndroid/raw/master/.github/images/app.svg" alt="Логотип ByeDPI" width="200" />
-  </p>
-  <h1>ByeByeDPI Android</h1>
-  <p>
-    Русский |
-    <a href="README-en.md">English</a> |
-    <a href="README-tr.md">Türkçe</a>
-  </p>
-  <p>
-    <a href="https://github.com/romanvht/ByeByeDPI/releases/latest"><img src="https://img.shields.io/github/v/release/romanvht/ByeByeDPI" alt="Latest Release" /></a>
-    <a href="https://github.com/romanvht/ByeByeDPI/releases"><img src="https://img.shields.io/github/downloads/romanvht/ByeByeDPI/total" alt="Downloads" /></a>
-    <a href="https://github.com/romanvht/ByeByeDPI/blob/master/LICENSE"><img src="https://img.shields.io/github/license/romanvht/ByeByeDPI" alt="License" /></a>
-    <a href="https://github.com/romanvht/ByeByeDPI"><img src="https://img.shields.io/github/languages/code-size/romanvht/ByeByeDPI" alt="GitHub code size in bytes"/></a>
-  </p>
-</div>
+# FlowZapret
 
-Приложение для Android, которое локально запускает ByeDPI и перенаправляет весь трафик через него.
+Android-приложение для обхода DPI на базе
+[ByeByeDPI](https://github.com/romanvht/ByeDPIAndroid) с 22 стратегиями
+[Flowseal](https://github.com/Flowseal/zapret-discord-youtube) и его
+доменными списками.
 
-Для стабильной работы может потребоваться изменить настройки. Подробнее о различных настройках можно прочитать в [документации ByeDPI](https://github.com/hufrea/byedpi/blob/main/README.md).
+Вторая вкладка — Telegram MTProto-прокси на базе
+[tg-ws-proxy-android](https://github.com/amurcanov/tg-ws-proxy-android)
+(обёртка над Rust-ядром [Flowseal/tg-ws-proxy](https://github.com/Flowseal/tg-ws-proxy)).
+Обе вкладки работают независимо и могут быть включены одновременно.
 
-Приложение не является VPN. Оно использует VPN-режим на Android для перенаправления трафика, но не передает ничего на удаленный сервер. Оно не шифрует трафик и не скрывает ваш IP-адрес.
+- Пакет: `com.flowzapret`
+- Android 8.0+ (API 26)
+- Архитектуры: `armeabi-v7a`, `arm64-v8a` (universal APK включён)
+- Движок обхода: [ByeDPI / ciadpi](https://github.com/hufrea/byedpi)
+- Лицензия: GPL-3.0
+- Исходники Rust-ядра прокси: `third_party/tgwsproxy/`
 
-У приложения есть единственный официальный сайт -> https://byebyedpi.xyz
+Подробности: [README-RU.md](README-RU.md) и
+[docs/flowseal-mapping.md](docs/flowseal-mapping.md).
 
----
+## Обновляемые компоненты
 
-### Возможности
-* Автозапуск сервиса при старте устройства
-* Сохранение списков параметров командной строки
-* Улучшена совместимость с Android TV/BOX
-* Раздельное туннелирование приложений
-* Импорт/экспорт настроек
+ByeByeDPI (`libbyedpi.so`), ядро Telegram-прокси (`libtgwsproxy.so`) и
+пресеты Flowseal (`flowseal_presets.json`) можно обновлять без пересборки
+APK: **меню → Компоненты**. Манифест обновлений подписан ECDSA P-256,
+артефакты проверяются по SHA-256 и ABI. Подробности и инструкция по
+публикации: [docs/COMPONENTS.md](docs/COMPONENTS.md).
 
-### Использование
-* Для работы автозапуска активируйте пункт в настройках.
-* Рекомендуется подключится один раз к VPN, чтобы принять запрос.
-* После этого, при загрузке устройства, приложение автоматически запустит сервис в зависимости от настроек (VPN/Proxy)
-* Комплексная инструкция от комьюнити [ByeByeDPI-Manual](https://byebyedpi.xyz)
-
-### Сборка
-1. Клонируйте репозиторий с сабмодулями:
 ```bash
-git clone --recurse-submodules
+./gradlew :app:assembleRelease
+tools/build-components.sh    # dist/components + подпись
+tools/publish-components.sh  # публикация в GitHub
 ```
-2. Запустите скрипт сборки из корня репозитория:
-```bash
-./gradlew assembleRelease
-```
-3. APK будет в `app/build/outputs/apk/release/`
 
-> P.S.: hev_socks5_tunnel не соберется под Windows, вам нужно будет использовать WSL
+Готовые APK: `app/build/outputs/apk/release/`.
 
-### Хеш подписи
-SHA-256:
-`77:45:10:75:AC:EA:40:64:06:47:5D:74:D4:59:88:3A:49:A6:40:51:FA:F3:2E:42:F7:18:F3:F9:77:7A:8D:FB`
+## Благодарности
 
-### Зависимости
-- [ByeDPI](https://github.com/hufrea/byedpi)
-- [hev-socks5-tunnel](https://github.com/heiher/hev-socks5-tunnel)
-
-### Благодарность
-- [hufrea](https://github.com/hufrea) - за [ByeDPI](https://github.com/hufrea/byedpi)
-- [dovecoteescapee](https://github.com/dovecoteescapee) - за изначальную реализацию [ByeDPIAndroid](https://github.com/dovecoteescapee/ByeDPIAndroid)
+[ByeByeDPI](https://github.com/romanvht/ByeDPIAndroid),
+[ByeDPI](https://github.com/hufrea/byedpi),
+[Flowseal](https://github.com/Flowseal/zapret-discord-youtube),
+[bol-van/zapret](https://github.com/bol-van/zapret),
+[hev-socks5-tunnel](https://github.com/heiher/hev-socks5-tunnel),
+[amurcanov/tg-ws-proxy-android](https://github.com/amurcanov/tg-ws-proxy-android),
+[Flowseal/tg-ws-proxy](https://github.com/Flowseal/tg-ws-proxy) и
+[JNA](https://github.com/java-native-access/jna).

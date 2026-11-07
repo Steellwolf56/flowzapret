@@ -46,7 +46,7 @@
         android:key="manage_domain_lists"
         android:title="@string/domain_lists"
         android:summary="@string/domain_lists_summary"
-        app:fragment="io.github.romanvht.byedpi.fragments.DomainListsFragment"
+        app:fragment="com.flowzapret.fragments.DomainListsFragment"
         app:iconSpaceReserved="false" />
 
     <SwitchPreference

@@ -3,25 +3,25 @@
     native <methods>;
 }
 
--keep class io.github.romanvht.byedpi.core.ByeDpiProxy { *; }
+-keep class com.flowzapret.core.ByeDpiProxy { *; }
 
--keep,allowoptimization class io.github.romanvht.byedpi.core.TProxyService { *; }
--keep,allowoptimization class io.github.romanvht.byedpi.activities.** { *; }
--keep,allowoptimization class io.github.romanvht.byedpi.services.** { *; }
--keep,allowoptimization class io.github.romanvht.byedpi.receiver.** { *; }
+-keep,allowoptimization class com.flowzapret.core.TProxyService { *; }
+-keep,allowoptimization class com.flowzapret.activities.** { *; }
+-keep,allowoptimization class com.flowzapret.services.** { *; }
+-keep,allowoptimization class com.flowzapret.receiver.** { *; }
 
--keep class io.github.romanvht.byedpi.fragments.** {
+-keep class com.flowzapret.fragments.** {
     <init>();
 }
 
--keep,allowoptimization class io.github.romanvht.byedpi.data.** {
+-keep,allowoptimization class com.flowzapret.data.** {
     <fields>;
 }
 
 -keepattributes Signature
 -keepattributes *Annotation*
 
--repackageclasses 'ru.romanvht'
+-repackageclasses 'com.flowzapret'
 -renamesourcefileattribute ''
 -keepattributes SourceFile,InnerClasses,EnclosingMethod,Signature,RuntimeVisibleAnnotations,*Annotation*,*Parcelable*
 -allowaccessmodification
@@ -32,3 +32,10 @@
 -adaptclassstrings
 -adaptresourcefilecontents **.xml,**.json
 -adaptresourcefilenames **.xml,**.json
+# --- JNA / libtgwsproxy ---
+-keep class com.sun.jna.** { *; }
+-keepclassmembers class * extends com.sun.jna.** { public *; }
+-keep interface com.flowzapret.tgproxy.TgProxyLibrary { *; }
+-keep class com.flowzapret.tgproxy.TgProxyNative { *; }
+-dontwarn java.awt.**
+-dontwarn com.sun.jna.**

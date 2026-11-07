@@ -19,4 +19,18 @@ local.properties
 .cxx
 
 # JNI
+app/src/main/jniLibs/flowzapret-release.jks
+keystore.properties
+
+# ndk-build output (regenerated from submodules)
 app/src/main/jniLibs/
+
+# Component signing key (never commit)
+tools/keys/
+
+# Release signing (never commit)
+*.jks
+*.keystore
+
+# Rust build output
+third_party/**/target/
