@@ -28,14 +28,6 @@ APK: **меню → Компоненты**. Манифест обновлени�
 артефакты проверяются по SHA-256 и ABI. Подробности и инструкция по
 публикации: [docs/COMPONENTS.md](docs/COMPONENTS.md).
 
-```bash
-./gradlew :app:assembleRelease
-tools/build-components.sh    # dist/components + подпись
-tools/publish-components.sh  # публикация в GitHub
-```
-
-Готовые APK: `app/build/outputs/apk/release/`.
-
 ## Благодарности
 
 [ByeByeDPI](https://github.com/romanvht/ByeDPIAndroid),
