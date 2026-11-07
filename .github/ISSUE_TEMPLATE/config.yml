@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Questions about the program on Github / Вопросы по програме на Github
-    url: https://github.com/dovecoteescapee/ByeDPIAndroid/discussions
-    about: Please do not ask questions in the issue tracker / Пожалуйста, не задавайте вопросы в трекере задач
-  - name: Questions about the program on NTC.party / Вопросы по програме на NTC.party
-    url: https://ntc.party/c/community-software/byedpi/39
+  - name: Telegram MTProto proxy issues / Проблемы с Telegram-прокси
+    url: https://github.com/Steellwolf56/flowzapret/issues/new?template=bug.yml
+    about: Please file a bug report and include logs from the Logs screen / Создайте сообщение об ошибке и приложите логи
+  - name: Questions and discussion / Вопросы и обсуждение
+    url: https://github.com/Steellwolf56/flowzapret/discussions
     about: Please do not ask questions in the issue tracker / Пожалуйста, не задавайте вопросы в трекере задач

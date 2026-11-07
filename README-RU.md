@@ -1,8 +1,13 @@
-# FlowZapret
+<div align="center">
+  <img src=".github/images/logo.svg" alt="FlowZapret" width="140" />
 
-Android-приложение для обхода DPI-блокировок, форк
+  # FlowZapret
+</div>
+
+Android-приложение для обхода DPI-блокировок и Telegram MTProto-прокси, форк
 [ByeByeDPI](https://github.com/romanvht/ByeDPIAndroid) с набором стратегий
-[Flowseal / zapret-discord-youtube](https://github.com/Flowseal/zapret-discord-youtube).
+[Flowseal / zapret-discord-youtube](https://github.com/Flowseal/zapret-discord-youtube)
+и прокси-ядром [tg-ws-proxy](https://github.com/Flowseal/tg-ws-proxy).
 
 - Пакет: `com.flowzapret`
 - Минимальная версия Android: 8.0 (API 26)
@@ -10,11 +15,17 @@ Android-приложение для обхода DPI-блокировок, фо�
 - Движок: [ByeDPI / ciadpi](https://github.com/hufrea/byedpi) + hev-socks5-tunnel
 - Лицензия: GPL-3.0
 
+Скачать: [Releases](https://github.com/Steellwolf56/flowzapret/releases/latest).
+Кратко: [README.md](README.md).
+
 ## Возможности
 
 - Две свайпаемые вкладки: «Обход DPI» и «Telegram».
 - Telegram MTProto-прокси (Rust-ядро tg-ws-proxy) работает независимо от
   VPN/прокси-режима обхода DPI; оба режима можно включить одновременно.
+- Настройки прокси: DC auto/manual, DC1–DC5 и media-DC, Fake TLS,
+  кастомный домен CF, тест DC, `no-secure`, PROXY-протокол, пул, буфер,
+  порт, автозапуск. Логи прокси с фильтрами INFO/ERROR/NULL.
 - VPN-режим (hev-socks5-tunnel) и режим локального SOCKS-прокси.
 - 22 стратегии Flowseal, добавленные в историю команд как закреплённые
   именованные пресеты. Пресеты видны в основном списке стратегий и в
@@ -26,6 +37,9 @@ Android-приложение для обхода DPI-блокировок, фо�
 - Автоматический подбор стратегий с проверкой доступности сайтов.
 - Настройки командной строки ByeDPI, редактор UI-настроек, быстрые
   плитки, ярлыки, автозапуск.
+- Обновляемые компоненты (меню → Компоненты): ядро ByeByeDPI, ядро
+  tgws-прокси и пресеты Flowseal обновляются без пересборки APK.
+  Подробности: [docs/COMPONENTS.md](docs/COMPONENTS.md).
 
 ## Пресеты
 
@@ -94,7 +108,17 @@ keyPassword=...
 После сборки APK лежат в `app/build/outputs/apk/release/`:
 
 - `app-universal-release.apk` — все ABI;
-- `app-arm64-v8a-release.apk` — только arm64-v8a.
+- `app-arm64-v8a-release.apk` — только arm64-v8a;
+- `app-armeabi-v7a-release.apk` — только armeabi-v7a.
+
+### Обновляемые компоненты
+
+```bash
+tools/generate-signing-key.sh   # один раз: ключ подписи манифеста
+tools/build-components.sh       # dist/components + подпись + zip
+tools/publish-components.sh     # публикация компонентов в GitHub
+tools/publish-app.sh            # APK в dist/ + GitHub-релиз (нужен gh)
+```
 
 ## Ограничения
 

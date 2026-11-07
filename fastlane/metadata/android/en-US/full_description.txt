@@ -1,12 +1,21 @@
-<p><i>ByeByeDPI</i> launches a local SOCKS5 proxy <a href='https://github.com/hufrea/byedpi' target='_blank' rel='nofollow noopener'>ByeDPI</a> to bypass DPI and redirects all traffic through it.</p>
-<p>For stable operation, configuration adjustments may be required. You can read more about various settings in the <a href='https://github.com/hufrea/byedpi/blob/main/README.md' target='_blank' rel='nofollow noopener'>ByeDPI documentation</a>.</p>
-<p>The application uses VPN mode on Android to redirect traffic but does not transmit anything to a remote server. It does not encrypt traffic or hide your IP address.</p>
+<p><i>FlowZapret</i> — DPI bypass and a Telegram MTProto proxy in a single app. A fork of <a href='https://github.com/romanvht/ByeDPIAndroid' target='_blank' rel='nofollow noopener'>ByeByeDPI</a> with <a href='https://github.com/Flowseal/zapret-discord-youtube' target='_blank' rel='nofollow noopener'>Flowseal</a> strategies and a built-in Telegram proxy tab powered by the Rust <a href='https://github.com/Flowseal/tg-ws-proxy' target='_blank' rel='nofollow noopener'>tg-ws-proxy</a> core.</p>
+<p>The app starts a local SOCKS5 proxy <a href='https://github.com/hufrea/byedpi' target='_blank' rel='nofollow noopener'>ByeDPI</a> to bypass DPI and routes traffic through it (VPN mode or local proxy).</p>
+<p>Stable operation may require configuration adjustments. See the <a href='https://github.com/hufrea/byedpi/blob/main/README.md' target='_blank' rel='nofollow noopener'>ByeDPI documentation</a> for details.</p>
+<p>The app uses Android VPN mode to route traffic but does not send anything to a remote server. It does not encrypt traffic or hide your IP address.</p>
 <p>
 <b>Features</b><br>
-* Support for app filtering in VPN mode (split tunneling via whitelist/blacklist)<br>
-* Auto-launch of VPN/Proxy on device startup<br>
+* Two swipeable tabs: “DPI bypass” and “Telegram”<br>
+* Telegram MTProto proxy (Rust tg-ws-proxy core) runs independently and simultaneously with DPI bypass<br>
+* Proxy settings: DC auto/manual, DC1–DC5 and media DC, Fake TLS, custom domain, test DC, no-secure, proxy protocol, pool and buffer<br>
+* Proxy logs with INFO/ERROR/NULL filters, copy and save<br>
+* 22 Flowseal strategies added to command history as pinned presets<br>
+* Flowseal domain lists — allowlists: traffic to domains outside the list is untouched<br>
+* Strategy auto-detection with site reachability checks<br>
+* App filtering in VPN mode (whitelist/blacklist)<br>
+* Auto-launch VPN/Proxy on device startup<br>
 * Saving command-line parameter lists with switching capability<br>
-* Improved compatibility with Android TV/BOX<br>
+* Improved Android TV/BOX compatibility<br>
 * Import/export of settings<br>
-* Ability to test application performance using a set of pre-configured commands (Beta)<br>
+* In-app component updates without rebuilding the APK: ByeByeDPI core, tgws proxy core and Flowseal presets (menu → Components)<br>
+* ARM only: armeabi-v7a and arm64-v8a<br>
 </p>
