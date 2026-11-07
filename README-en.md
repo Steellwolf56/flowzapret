@@ -109,6 +109,7 @@ are in `app/src/main/tgwsJniLibs/`.
 ## Documentation
 
 - [docs/COMPONENTS.md](docs/COMPONENTS.md) — components, manifest, signing, publishing, rollback
+- [docs/BUILD.md](docs/BUILD.md) — building from source, signing, publishing a release
 - [docs/flowseal-mapping.md](docs/flowseal-mapping.md) — Flowseal presets → ByeDPI arguments
 - [CHANGELOG.md](CHANGELOG.md) — version history
 - [README-RU.md](README-RU.md) — detailed Russian description

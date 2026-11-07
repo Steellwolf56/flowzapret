@@ -86,30 +86,21 @@ Fake TLS AUTO (+ALT 1–3), Simple Fake (+ALT 1–2). Они добавляют�
 
 ## Сборка
 
-Нужны Android SDK, NDK и Rust-таргеты для ARM.
-
 ```bash
-# 1) APK (ABI: armeabi-v7a, arm64-v8a)
-./gradlew :app:assembleRelease
-# результат: app/build/outputs/apk/release/
-
-# 2) Обновляемые компоненты + подпись (dist/components, zip)
-tools/generate-signing-key.sh   # один раз: ключ подписи манифеста
-tools/build-components.sh
-
-# 3) Публикация компонентов
-tools/publish-components.sh
-
-# 4) APK в dist/ + GitHub-релиз (нужен gh)
-tools/publish-app.sh
+./gradlew :app:assembleRelease   # APK → app/build/outputs/apk/release/
+tools/build-components.sh        # компоненты + подпись → dist/components
+tools/publish-components.sh      # публикация компонентов в GitHub
+tools/publish-app.sh             # APK в dist/ + GitHub-релиз (нужен gh)
 ```
 
 Rust-ядро прокси лежит в `third_party/tgwsproxy/` (GPL-3.0); собранные
-библиотеки — в `app/src/main/tgwsJniLibs/`.
+библиотеки — в `app/src/main/tgwsJniLibs/`. Полные требования и шаги —
+в [docs/BUILD.md](docs/BUILD.md).
 
 ## Документация
 
 - [docs/COMPONENTS.md](docs/COMPONENTS.md) — компоненты, манифест, подпись, публикация, откат
+- [docs/BUILD.md](docs/BUILD.md) — сборка из исходников, подпись, публикация релиза
 - [docs/flowseal-mapping.md](docs/flowseal-mapping.md) — пресеты Flowseal → аргументы ByeDPI
 - [CHANGELOG.md](CHANGELOG.md) — история версий
 - [README-RU.md](README-RU.md) — подробное описание на русском
